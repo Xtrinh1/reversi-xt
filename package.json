@@ -1,0 +1,18 @@
+{
+  "name": "xtrinh",
+  "version": "0.0.1",
+  "description": "Web Version of Reversi",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "reversi"
+  ],
+  "author": "Xuan Trinh",
+  "license": "ISC",
+  "dependencies": {
+    "node-static": "^0.7.11",
+    "socket.io": "^4.5.0"
+  }
+}
