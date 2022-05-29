@@ -389,6 +389,23 @@ socket.on('game_update', (payload) => {
             $('#' + row + '_' + column).off('click');
             $('#' + row + '_' + column).removeClass('hovered_over');
             if (payload.game.whose_turn === my_color) {
+                //if (payload.game.legal_moves[row][column] === my_color.substr(0, 1)) {
+                    $('#' + row + '_' + column).addClass('hovered_over');
+                    $('#' + row + '_' + column).click(((r, c) => {
+                        return (() => {
+                            let payload = {
+                                row: r,
+                                column: c,
+                                color: my_color
+                            };
+                            console.log('**** Client log message, sending \'play_token\' command: ' + JSON.stringify(payload));
+                            socket.emit('play_token', payload);
+                        });
+                    })(row, column));
+                }
+            }
+        }
+    //}
 
     clearInterval(interval_timer)
     interval_timer = setInterval(((last_time) => {
