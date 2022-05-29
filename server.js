@@ -645,7 +645,7 @@ if(sockets.size >= 2) {
         }
         else {
     /*This player should be kicked out */
-    console.log("Kicking " + game + "out of game: " + game_id);
+    console.log("Kicking " + first + "out of game: " + game_id);
     io.in(second).socketsLeave([game_id]);
         }
     }
