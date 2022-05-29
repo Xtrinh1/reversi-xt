@@ -351,7 +351,7 @@ socket.on('game_update', (payload) => {
                     altTag = "white token ";
                 }
                 else if ((old_board[row][column] === '?') && (board[row][column] === 'b')) {
-                    graphic = "Black-white-flip.gif";
+                    graphic = "Black-white-Flip.gif";
                     altTag = "black token ";
                 }
                 else if ((old_board[row][column] === ' ') && (board[row][column] === 'w')) {
@@ -359,7 +359,7 @@ socket.on('game_update', (payload) => {
                     altTag = "white token ";
                 }
                 else if ((old_board[row][column] === ' ') && (board[row][column] === 'b')) {
-                    graphic = "Black-white-flip.gif";
+                    graphic = "Black-white-Flip.gif";
                     altTag = "black token ";
                 }
                 else if ((old_board[row][column] === 'w') && (board[row][column] === ' ')) {
