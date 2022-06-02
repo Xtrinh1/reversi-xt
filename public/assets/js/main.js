@@ -385,11 +385,12 @@ socket.on('game_update', (payload) => {
                 const t = Date.now();
                 $('#' + row + '_' + column).html('<img class="img-fluid" src="assets/images/' + graphic + '?time=' + t + '" alt="' + altTag + '" />');
             }
+
             /* Set up interactivity*/
             $('#' + row + '_' + column).off('click');
             $('#' + row + '_' + column).removeClass('hovered_over');
             if (payload.game.whose_turn === my_color) {
-                //if (payload.game.legal_moves[row][column] === my_color.substr(0, 1)) {
+                if(payload.game.legal_moves[row][column] === my_color.substring(0,1)) {
                     $('#' + row + '_' + column).addClass('hovered_over');
                     $('#' + row + '_' + column).click(((r, c) => {
                         return (() => {
@@ -405,7 +406,7 @@ socket.on('game_update', (payload) => {
                 }
             }
         }
-    //}
+    }
 
     clearInterval(interval_timer)
     interval_timer = setInterval(((last_time) => {
