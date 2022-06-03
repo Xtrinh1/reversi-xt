@@ -581,6 +581,10 @@ socket.on('send_chat_message', (payload) => {
                 game.legal_moves = calculate_legal_moves('w', game.board);
         }
 
+        let d = new Date ();
+        game.last_move_time = d.getTime();
+        
+
         send_game_update(socket,game_id, 'played a tocken');
         });
 });
@@ -833,15 +837,15 @@ if(sockets.size >= 2) {
           let whitesum = 0;
           let blacksum = 0;
 
-          for (let row =0; row < 8; row++){
+          for (let row =0; row < 8; row++) {
               for (let column = 0; column <8; column ++) {
-                  if(games[game_id].legal_moves[row][column] !== ' ') {
+                  if (games[game_id].legal_moves[row][column] !== ' ') {
                     legal_moves++;
                   }
-                  if(games[game_id].board[row][column] === 'w') {
+                  if (games[game_id].board[row][column] === 'w') {
                     whitesum++;
                   }
-                  if(games[game_id].board[row][column] === 'w') {
+                  if (games[game_id].board[row][column] === 'b') {
                     blacksum++;
                   }
               }
@@ -851,7 +855,7 @@ if(sockets.size >= 2) {
             if (whitesum > blacksum) {
                 winner = "white";
             }
-            if (whitesum < blacksum){
+            if (whitesum < blacksum) {
                 winner = "black";
 
             }
@@ -863,6 +867,7 @@ if(sockets.size >= 2) {
                   game: games[game_id],
                   who_won: winner
               }
+
               io.in(game_id).emit('game_over', payload);
 
               /*Delete old games after one hour */
